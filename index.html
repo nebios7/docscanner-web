@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DocScanner – Scanner de documents pour iPhone</title>
 <style>
-  /* Reset de base et style Apple */
+  /* ========== RESET & BASE ========== */
   * {
     margin: 0;
     padding: 0;
@@ -21,20 +21,22 @@
     color: #1c1c1e;
     text-align: center;
     background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* ========== TYPOGRAPHIE ========== */
   h1 {
-    font-size: 2.2em;
+    font-size: 2.4em;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 10px;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 600;
     letter-spacing: -0.01em;
-    margin: 40px 0 20px;
+    margin: 50px 0 20px;
   }
 
   p {
@@ -44,23 +46,26 @@
   }
 
   .subtitle {
-    font-size: 1.3em;
+    font-size: 1.25em;
     color: #6e6e73;
     margin-bottom: 30px;
   }
 
+  /* ========== HERO / EN-TÊTE ========== */
   .hero {
     margin-bottom: 40px;
   }
 
-  .hero img {
+  .app-icon {
     width: 120px;
     height: 120px;
     border-radius: 24px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: inline-block;
   }
 
+  /* ========== BOUTONS ========== */
   .links {
     margin: 2em 0 3em;
     display: flex;
@@ -79,11 +84,13 @@
     font-weight: 600;
     width: 280px;
     text-align: center;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
   a.button:hover {
     background: #0066d6;
+    transform: scale(1.02);
   }
 
   a.button.secondary {
@@ -95,6 +102,7 @@
     background: #e5e5ea;
   }
 
+  /* ========== CARTES & GRILLES ========== */
   .features {
     display: grid;
     grid-template-columns: 1fr;
@@ -107,6 +115,11 @@
     padding: 24px 20px;
     border-radius: 16px;
     text-align: left;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .feature-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
   .feature-item h3 {
@@ -121,33 +134,80 @@
     margin-bottom: 0;
   }
 
+  /* ========== ÉTAPES ========== */
   .steps {
     text-align: left;
     margin: 40px 0;
-    padding: 20px;
+    padding: 24px 20px;
     background: #f9f9fb;
     border-radius: 16px;
   }
 
   .steps ol {
     padding-left: 20px;
+    counter-reset: step-counter;
+    list-style: none;
   }
 
   .steps li {
-    margin-bottom: 12px;
+    counter-increment: step-counter;
+    margin-bottom: 14px;
     font-size: 1.05em;
     color: #3a3a3c;
+    position: relative;
+    padding-left: 36px;
   }
 
-  .testimonial {
-    font-style: italic;
-    color: #6e6e73;
-    margin: 30px 0;
-    padding: 20px;
+  .steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 26px;
+    height: 26px;
+    background: #007aff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    font-weight: 600;
+  }
+
+  /* ========== FAQ ========== */
+  .faq {
+    margin: 40px 0;
+    text-align: left;
+  }
+
+  .faq details {
     background: #f9f9fb;
-    border-radius: 16px;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s ease;
   }
 
+  .faq summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: #1c1c1e;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .faq details[open] {
+    background: #f2f2f7;
+  }
+
+  .faq p {
+    margin: 12px 0 0;
+    font-size: 0.95em;
+    color: #6e6e73;
+  }
+
+  /* ========== PIED DE PAGE ========== */
   footer {
     margin-top: 60px;
     padding-top: 20px;
@@ -166,52 +226,62 @@
     text-decoration: underline;
   }
 
+  /* ========== RESPONSIVE ========== */
   @media (max-width: 480px) {
-    h1 { font-size: 1.8em; }
+    h1 { font-size: 2em; }
     .subtitle { font-size: 1.1em; }
     a.button { width: 100%; }
+    .app-icon { width: 100px; height: 100px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- En-tête / Hero -->
+  <!-- ========== HERO ========== -->
   <div class="hero">
-    <!-- Icône de l'app (remplacez par votre propre icône) -->
-    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23007aff'/%3E%3Cpath d='M30 35h40v30H30z' fill='white'/%3E%3Cpath d='M35 45h30v15H35z' fill='%23007aff'/%3E%3C/svg%3E" alt="Icône DocScanner">
+    <!-- Logo de l'application (fichier AppIcon-1024.png à placer à la racine du dépôt) -->
+    <img class="app-icon" src="AppIcon-1024.png" alt="Icône DocScanner" width="120" height="120">
     <h1>DocScanner</h1>
     <p class="subtitle">Numérisez, organisez et partagez vos documents en un instant.</p>
     <p>Transformez votre iPhone en scanner de poche. Détection automatique des bords, recadrage intelligent, OCR et export PDF haute qualité.</p>
   </div>
 
-  <!-- Boutons principaux -->
+  <!-- ========== BOUTONS PRINCIPAUX ========== -->
   <div class="links">
     <a class="button" href="#telecharger">Télécharger sur l'App Store</a>
     <a class="button secondary" href="#fonctionnalites">Découvrir les fonctionnalités</a>
   </div>
 
-  <!-- Section Fonctionnalités -->
+  <!-- ========== FONCTIONNALITÉS ========== -->
   <h2 id="fonctionnalites">Fonctionnalités</h2>
   <div class="features">
     <div class="feature-item">
       <h3>📷 Numérisation intelligente</h3>
-      <p>Détection automatique des contours, correction de perspective et amélioration de la lisibilité.</p>
+      <p>Détection automatique des contours, correction de perspective et amélioration de la lisibilité pour des scans parfaits.</p>
     </div>
     <div class="feature-item">
       <h3>🔍 Reconnaissance de texte (OCR)</h3>
-      <p>Extrayez le texte de vos scans et recherchez dans vos documents en un éclair.</p>
+      <p>Extrayez le texte de vos scans et effectuez des recherches dans l'ensemble de vos documents en quelques secondes.</p>
     </div>
     <div class="feature-item">
       <h3>📁 Organisation automatique</h3>
-      <p>Classez vos documents par tags, dossiers et dates. Retrouvez tout en quelques secondes.</p>
+      <p>Classez vos documents par tags, dossiers et dates. Retrouvez n'importe quel fichier instantanément grâce à la recherche avancée.</p>
     </div>
     <div class="feature-item">
       <h3>🔒 Confidentialité et sécurité</h3>
-      <p>Vos documents restent sur votre appareil. Protection par Face ID / Touch ID disponible.</p>
+      <p>Vos documents restent sur votre appareil. Verrouillez l'accès avec Face ID ou Touch ID pour une tranquillité totale.</p>
+    </div>
+    <div class="feature-item">
+      <h3>☁️ Synchronisation iCloud</h3>
+      <p>Vos scans sont automatiquement sauvegardés et synchronisés sur tous vos appareils Apple via iCloud.</p>
+    </div>
+    <div class="feature-item">
+      <h3>📤 Export multi-formats</h3>
+      <p>Partagez en PDF, JPEG ou PNG. Envoyez par e-mail, AirDrop ou enregistrez directement dans l'application Fichiers.</p>
     </div>
   </div>
 
-  <!-- Section Comment ça marche -->
+  <!-- ========== COMMENT ÇA MARCHE ========== -->
   <h2>Comment ça marche</h2>
   <div class="steps">
     <ol>
@@ -222,20 +292,35 @@
     </ol>
   </div>
 
-  <!-- Témoignage -->
-  <div class="testimonial">
-    « DocScanner a remplacé mon scanner de bureau. Simple, rapide et les scans sont impeccables. »<br>
-    — Marie L., utilisatrice vérifiée
+  <!-- ========== FAQ ========== -->
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details>
+      <summary>DocScanner est-il vraiment gratuit ?</summary>
+      <p>Oui, la version de base est entièrement gratuite. Des fonctionnalités avancées (OCR illimité, synchronisation multi-appareils) sont disponibles via un abonnement optionnel.</p>
+    </details>
+    <details>
+      <summary>Mes documents sont-ils stockés sur un serveur ?</summary>
+      <p>Non, tous les scans sont traités et stockés localement sur votre iPhone. Si vous activez la synchronisation iCloud, ils sont chiffrés et stockés dans votre espace iCloud personnel.</p>
+    </details>
+    <details>
+      <summary>Puis-je scanner plusieurs pages en un seul PDF ?</summary>
+      <p>Absolument. DocScanner vous permet de scanner plusieurs pages à la suite et de les combiner en un seul document PDF.</p>
+    </details>
+    <details>
+      <summary>L'OCR fonctionne-t-il en français ?</summary>
+      <p>Oui, la reconnaissance de texte prend en charge le français et plus de 20 autres langues.</p>
+    </details>
   </div>
 
-  <!-- Appel à l'action -->
+  <!-- ========== APPEL À L'ACTION ========== -->
   <h2 id="telecharger">Prêt à scanner ?</h2>
   <p>Téléchargez DocScanner gratuitement et simplifiez votre vie numérique.</p>
   <div class="links">
     <a class="button" href="#">Télécharger sur l'App Store</a>
   </div>
 
-  <!-- Pied de page avec liens support et confidentialité -->
+  <!-- ========== PIED DE PAGE ========== -->
   <footer>
     <p>
       <a href="docscanner-support.html">Support</a>
